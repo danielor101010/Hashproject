@@ -114,34 +114,39 @@ document.addEventListener('DOMContentLoaded', function () {
   
     function insertDataDouble(tableContainer) {
       const { inputValues, table } = splitInput(tableContainer, valuesInput);
-  
+    
       let collisions = 0;
       let startTime = performance.now();
       var verticalDiv = document.getElementById("verticalDiv");
-
-  
+    
       inputValues.forEach((value, i) => {
-          setTimeout(() => {
-            verticalDiv.style.backgroundColor = "transparent"; // Set background to transparent initially
-              let index = value % 12; // Initial hash
-              const hash2 = 5 - (value % 5); // Adjusted second hash
-  
-              while (table.children[index].querySelector('.value-div').textContent !== '') {
-                  verticalDiv.style.backgroundColor = "red"; // Collision occurred, set background to red
-                  index = (index + hash2) % 12;
-                  collisions++;
-              }
-  
-              table.children[index].querySelector('.value-div').textContent = value;
-              currentIndex = index;
-  
-              moveVerticalDiv(tableContainer);
-              if (i === inputValues.length - 1) {
-                  displayResults({ time: performance.now() - startTime, collisions }, 'Double Hashing', tableContainer);
-              }
-          }, i * 1000);
+        setTimeout(() => {
+          verticalDiv.style.backgroundColor = "transparent"; // Set background to transparent initially
+          let index = value % 12; // Initial hash
+          const hash2 = 2 - (value % 2); // Adjusted second hash
+
+          let j = 0; // Counter for collisions
+          while (table.children[index].querySelector('.value-div').textContent !== '') {
+            index = (index + j * hash2) % 12;          
+            verticalDiv.style.backgroundColor = "red"; // Set background to transparent initially
+            collisions++;
+            j++;
+          }
+    
+          // Use the existing cellContainer instead of creating a new one
+          const cellContainer = table.children[index];
+          cellContainer.querySelector('.value-div').textContent = value;
+          currentIndex = index;
+    
+          moveVerticalDiv(tableContainer);
+    
+          if (i === inputValues.length - 1) {
+            displayResults({ time: performance.now() - startTime, collisions }, 'Double Hashing', tableContainer);
+          }
+        }, i * 1000);
       });
-  }
+    }
+    
   
   
     function insertDataChaining(tableContainer) {
@@ -156,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
       inputValues.forEach((value, i) => {
         setTimeout(() => {
-          verticalDiv.style.backgroundColor = "transparent"; // Set background to transparent initially
+          verticalDiv.style.backgroundColor = "white"; // Set background to transparent initially
           const index = value % 12; // Fixed size of 12 cells
           hashTable[index].push(value);
   
