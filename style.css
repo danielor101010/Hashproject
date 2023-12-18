@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  .title {
+    text-align: center;
+    padding: 20px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 2rem;
+  }
+  
+  .wrap-div {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    padding: 20px;
+    background-color: #ecf0f1;
+  }
+  
+  .table-container {
+    position: relative;
+    width: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .algorithm-name {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .table {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cell-container {
+    display: flex;
+  }
+  
+  .table-cell {
+    margin: auto;
+    width: 50%;
+    border: 1px solid #bdc3c7;
+    box-sizing: border-box;
+    text-align: center;
+    height: 25px;
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+ 
+  
+  .insert-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .insert-button:hover {
+    background-color: #2980b9;
+  }
+  
+  #verticalDiv {
+    position: absolute;
+    width: 50px; /* Adjust the width as needed */
+    height: 25px; /* Adjust the height as needed */
+    transition: all 0.5s ease; /* Add smooth transition effect */
+    background-color: white;
+  }
+  
+  
+  .moving-value {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .collision {
+    background-color: red;
+  }
+
+
+
+  
